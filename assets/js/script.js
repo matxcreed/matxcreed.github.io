@@ -49,6 +49,7 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
 }
 
+
 // add click event to modal close button
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
@@ -157,3 +158,48 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  const button = form.querySelector("button");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    button.disabled = true;
+    button.innerText = "Sending...";
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        form.reset();
+        button.innerText = "Sent ✔️";
+        if (status) {
+          status.style.display = "block";
+          status.innerText = "✅ Message sent successfully!";
+        }
+      } else {
+        throw new Error("Formspree error");
+      }
+    } catch (error) {
+      button.innerText = "Error ❌";
+      button.disabled = false;
+      if (status) {
+        status.style.display = "block";
+        status.innerText = "❌ Something went wrong. Try again.";
+      }
+    }
+  });
+});
