@@ -165,11 +165,12 @@ body { background: var(--smoky-black); }
 
 /*-----------------------------------*\
   #REUSED STYLE
+background-image: url(../images/pexels-myburgh-1102797.jpg);
 \*-----------------------------------*/
 
 .sidebar,
 article {
-  background-image: url(../images/pexels-myburgh-1102797.jpg);
+  background-image: url(/assets/images/pexels-myburgh-1102797.jpg);
   background-size: cover;        /* cubre toda la sidebar */
   background-position: center;   /* centra la imagen */
   background-repeat: no-repeat;
