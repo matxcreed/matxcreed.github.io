@@ -55,7 +55,7 @@
   );
 
   /* soliddd */
-  --violeta-card:hsla(244, 47%, 17%, 0.929);
+  --violeta-card:hsla(248, 79%, 7%, 0.929);
   --purple-skill: hsla(245, 47%, 17%, 0.546); 
   --jet: hsl(0, 0%, 22%);
   --onyx: hsl(240, 1%, 17%);
@@ -157,7 +157,7 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body { background: var(--violeta-card); }
 
 
 
@@ -165,20 +165,53 @@ body { background: var(--smoky-black); }
 
 /*-----------------------------------*\
   #REUSED STYLE
+  url(/assets/images/pexels-myburgh-1102797.jpg)
 background-image: url(../images/pexels-myburgh-1102797.jpg);
 \*-----------------------------------*/
 
-.sidebar,
-article {
+/*article {
   background-image: url(/assets/images/pexels-myburgh-1102797.jpg);
   background-size: cover;        /* cubre toda la sidebar */
-  background-position: center;   /* centra la imagen */
-  background-repeat: no-repeat;
+  /*background-position: center;   /* centra la imagen */
+  /*background-repeat: no-repeat;
 
   border: 1px solid var(--jet);
   border-radius: 20px;
   padding: 15px;
   box-shadow: var(--shadow-1);
+}*/
+.sidebar,
+.glass-bg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  outline: 1px solid rgba(255, 255, 255, 0.25);
+  outline-offset: -1px;
+  box-shadow: var(--shadow-1);
+}
+
+.glass-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("../images/pexels-myburgh-1102797.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(var(--glass-blur, 2px));
+  transform: scale(1.1);
+
+  z-index: -1;
+}
+
+.glass-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.255);
+  z-index: -1;
 }
 
 .separator {
@@ -892,10 +925,18 @@ main {
 
 .skills-title { margin-bottom: 20px; }
 
-.skills-list { padding: 20px; 
+.skills-list {
+  padding: 20px;
   border: 1px solid rgb(132, 52, 5);
-  
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  column-gap: 40px;              /* separación horizontal */
+  row-gap: 20px;                 /* separación vertical */
 }
+
+
+
 
 .skill { margin-bottom: 20px; }
 
