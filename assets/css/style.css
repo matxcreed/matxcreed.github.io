@@ -195,7 +195,7 @@ background-image: url(../images/pexels-myburgh-1102797.jpg);
   position: absolute;
   inset: 0;
 
-  background-image: url("../images/pexels-myburgh-1102797.jpg");
+  background-image: url(/assets/images/pexels-myburgh-1102797.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
